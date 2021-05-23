@@ -54,7 +54,7 @@ const SearchMusic = ()=>{
             </section>
             <section>
                 {musicData.map((obj,index)=>
-                    <MusicCard key={index} {...obj}>
+                    <MusicCard key={index} {...obj} highlightWords={searchText}>
 
                     </MusicCard>
                     // <div key={index}>

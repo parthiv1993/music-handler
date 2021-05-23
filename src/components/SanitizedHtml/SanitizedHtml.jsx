@@ -5,7 +5,7 @@ const allowedTags = [ 'b', 'i', 'h1','u','em', 'strong', 'a' ,'span']
 
 const regexForOpeningTag = new RegExp(/(<([a-z0-9]+)>)/,'gi');
 
-const SanitizedHTML = ({value})=>{
+const SanitizedHTML = ({value,highlighter=(val)=>val})=>{
     
     const getPartitionsFromString = (value)=>{
         const tagFound = value.match(regexForOpeningTag)[0];
@@ -32,7 +32,7 @@ const SanitizedHTML = ({value})=>{
         const observations = getPartitionsFromString(value);
         if(observations.isValid){
             return [
-                observations.pre,
+                highlighter(observations.pre),
                 React.createElement(
                     observations.tag,
                     {key:observations.post},
@@ -42,7 +42,7 @@ const SanitizedHTML = ({value})=>{
             ]
         }else{
             return [
-                value.substring(0,observations.innerStringStart),
+                highlighter(value.substring(0,observations.innerStringStart)),
                 getInnerHTML(value.substring(observations.innerStringStart))
             ]
         }
@@ -53,7 +53,7 @@ const SanitizedHTML = ({value})=>{
         if(regexForOpeningTag.test(value)){
             return getElement(value);
         }
-        return value
+        return highlighter(value)
     }
    
     return React.createElement('span', {key:value }, getInnerHTML(value))
