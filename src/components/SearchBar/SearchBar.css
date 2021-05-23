@@ -1,0 +1,35 @@
+.search-container{
+    display: flex;
+    width: 100%;
+    padding: 16px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    box-sizing: border-box;
+    
+}
+
+.search-type-container{
+    flex: 1 1 25%;
+    min-width: 300px;
+    display: block;
+    margin:8px;
+}
+
+.search-input-container{
+    flex: 1 1 40%;
+    display: inline-block;
+    margin:8px;
+}
+
+.search-button-container{
+    flex: 1 1 20%;
+    display: inline-block;
+    margin:8px;
+}
+
+.search-input{
+    height: 2em;
+    padding: 0px 4px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
